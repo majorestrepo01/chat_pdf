@@ -33,7 +33,7 @@ st.markdown("""
 
 # 2. Barra lateral (Configuración y Configuración de API)
 with st.sidebar:
-    # Imagen de encabezado en la barra lateral
+    # Imagen de encabezado cambiada a Uximg.png
     try:
         image = Image.open('Uximg.png')
         st.image(image, use_container_width=True)
@@ -43,7 +43,7 @@ with st.sidebar:
     st.title("⚙️ Configuración")
     st.caption("Este agente analiza el contenido de tu PDF mediante modelos del lenguaje.")
 
-    st.divider()
+    st.markdown("---")
 
     # Entrada de API Key
     ke = st.text_input('Clave API de OpenAI', type="password", help="Tu API Key no se almacena en ningún servidor.")
@@ -53,14 +53,14 @@ with st.sidebar:
     else:
         st.warning("Ingresa tu API Key para habilitar la app", icon="🔑")
 
-    st.divider()
+    st.markdown("---")
     st.caption(f"🐍 Python v{platform.python_version()}")
 
 # 3. Panel Principal
 st.title("Analizador de Documentos PDF 💬")
 st.write("Carga tu archivo, procesa el texto y realiza preguntas sobre su contenido en tiempo real.")
 
-st.divider()
+st.markdown("---")
 
 # Sección de Carga
 col_upload, col_info = st.columns([1, 1], gap="medium")
@@ -70,7 +70,7 @@ with col_upload:
     pdf = st.file_uploader("Selecciona un archivo PDF", type="pdf", label_visibility="collapsed")
 
 # Procesamiento del PDF
-if pdf is not None: 
+if pdf is not None:
     if not ke:
         with col_info:
             st.warning("Por favor ingresa tu API Key en la barra lateral para continuar.")
@@ -103,7 +103,7 @@ if pdf is not None:
                 m_col2.metric("Fragmentos", len(chunks))
                 st.success("¡Documento procesado y listo!", icon="🎉")
 
-            st.divider()
+            st.markdown("---")
 
             # 4. Sección de Preguntas y Respuestas
             st.subheader("3. Consulta sobre el documento")
