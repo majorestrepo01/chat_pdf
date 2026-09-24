@@ -35,7 +35,7 @@ st.markdown("""
 with st.sidebar:
     # Imagen de encabezado cambiada a Uximg.png
     try:
-        image = Image.open('Uximg.png')
+        image = Image.open('Uximg.PNG')
         st.image(image, use_container_width=True)
     except Exception:
         pass
