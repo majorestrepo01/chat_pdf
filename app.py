@@ -25,17 +25,25 @@ st.markdown("""
         padding-top: 2rem;
         padding-bottom: 2rem;
     }
-    .stChatMessage {
+    .user-msg {
+        background-color: #f0f2f6;
+        padding: 10px 15px;
         border-radius: 10px;
+        margin-bottom: 10px;
+    }
+    .bot-msg {
+        background-color: #e8f4f8;
+        padding: 10px 15px;
+        border-radius: 10px;
+        margin-bottom: 10px;
     }
     </style>
 """, unsafe_allow_html=True)
 
 # 2. Barra lateral (Configuración y Configuración de API)
 with st.sidebar:
-    # Imagen de encabezado cambiada a Uximg.png
     try:
-        image = Image.open('Uximg.PNG')
+        image = Image.open('Uximg.png')
         st.image(image, use_container_width=True)
     except Exception:
         pass
@@ -116,12 +124,9 @@ if pdf is not None:
                     chain = load_qa_chain(llm, chain_type="stuff")
                     response = chain.run(input_documents=docs, question=user_question)
 
-                # Visualización con chat nativo
-                with st.chat_message("user"):
-                    st.write(user_question)
-
-                with st.chat_message("assistant"):
-                    st.write(response)
+                # Mostrar respuesta en formato compatible con versiones antiguas
+                st.markdown(f"**👤 Pregunta:** {user_question}")
+                st.markdown(f"**🤖 Respuesta:**\n\n{response}")
 
         except Exception as e:
             st.error("Ocurrió un error al procesar el archivo")
