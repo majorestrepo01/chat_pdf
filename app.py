@@ -35,7 +35,7 @@ st.markdown("""
 with st.sidebar:
     # Imagen de encabezado en la barra lateral
     try:
-        image = Image.open('Chat_pdf.png')
+        image = Image.open('Uximg.png')
         st.image(image, use_container_width=True)
     except Exception:
         pass
